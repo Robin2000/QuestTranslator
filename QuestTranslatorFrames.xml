@@ -4,7 +4,7 @@
 	<!-- UIParent -->
 	<Frame name="QuestTranslatorFrame1" parent="QuestLogDetailScrollFrame" hidden="true" movable="true" enableMouse="true">
 		<Size>
-			<AbsDimension x="350" y="425"/>
+			<AbsDimension x="350" y="450"/>
 		</Size>
 		<Anchors>
 			<Anchor point="RIGHT">
@@ -42,7 +42,7 @@
 					</Size>
 					<Color r="0.5" g="0.5" b="1" a="1" />
 				</FontString>
-				<FontString name="QuestTranslator_MainTitle" font="GameFontNormal" text="QuestTranslator v. 1.05">
+				<FontString name="QuestTranslator_MainTitle" font="GameFontNormal" text="QuestTranslator v. 4.01">
 					<Anchors>
 						<Anchor point="TOPRIGHT">
 							<Offset>
@@ -137,7 +137,7 @@
 					</Size>
 					<Color r="0.5" g="0.5" b="1" a="1" />
 				</FontString>
-				<FontString name="QuestTranslator_MainTitle2" font="GameFontNormal" text="QuestTranslator v. 1.05">
+				<FontString name="QuestTranslator_MainTitle2" font="GameFontNormal" text="QuestTranslator v. 4.01">
 					<Anchors>
 						<Anchor point="TOPRIGHT">
 							<Offset>
