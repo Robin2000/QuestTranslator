@@ -239,10 +239,37 @@ function QuestTranslator_OnEvent3()
   end
   
 end
-
+function findLast(str,substr)
+   local idx1=nil;
+   local tmp = 0;
+   
+   while (tmp ~= nil) do
+     tmp = string.find(str, substr, tmp+1);
+     if(tmp) then 
+         idx1 = tmp;
+     end
+   end
+   
+   return idx1;
+end
 
 function QuestTranslator_SearchIDforName(qqq_title)
     qqq_ID = 0;
+    --The wow server side changes the quest title to title[id].
+   --/run for key in pairs(string)do ChatFrame1:AddMessage(key)end   
+
+   if (qqq_title) then
+      local idx1=findLast(qqq_title,"%[");
+      local idx2=findLast(qqq_title,"%]");
+      --SendChatMessage(idx1);
+      if(idx1~=nil and idx2~=nil) then
+         local word = string.sub(qqq_title,idx1+1,idx2-1);
+         if(word~=nil) then
+            return tonumber(word);
+         end
+      end
+   end
+   
     if (QuestTranslator_QuestList[qqq_title]) then
         local qqq_lists=QuestTranslator_QuestList[qqq_title];
         qqq_i=string.find(qqq_lists, ",");
