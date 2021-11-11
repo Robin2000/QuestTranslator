@@ -7,7 +7,7 @@
 -- Global Variables
 local QTR_version = "4.01";
 local QTR_name = UnitName("player");
-local QTR_class= UnitClass("player");
+local QTR_class,_= UnitClass("player");
 local QTR_race = UnitRace("player");
 local QTR_event="";
 local QuestTranslator_MessOrig = {
@@ -560,10 +560,15 @@ end
 
 function QuestTranslator_ExpandUnitInfo(msg)
   -- replace special characters into message
-  msg = string.gsub(msg, "NEW_LINE", "\n");
-  msg = string.gsub(msg, "YOUR_NAME", QTR_name);
-  msg = string.gsub(msg, "YOUR_CLASS", QTR_class);
-  msg = string.gsub(msg, "YOUR_RACE", QTR_race);
+  msg = string.gsub(msg, "\n", "|n");
+  msg = string.gsub(msg, "$n", QTR_name);
+  msg = string.gsub(msg, "$N", QTR_name);
+  msg = string.gsub(msg, "$c", QTR_class);
+  msg = string.gsub(msg, "$C", QTR_class);
+  msg = string.gsub(msg, "$r", QTR_race);
+  msg = string.gsub(msg, "$R", QTR_race);
+  msg = string.gsub(msg, "$B", "|n");
+  msg = string.gsub(msg, "$b", "|n");
   return msg;
 end
 
