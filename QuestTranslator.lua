@@ -142,8 +142,8 @@ function QuestTranslator_OnLoad1()
   else
      local QTR_QuestLogTitleButton_OnClik = QuestLogTitleButton_OnClick;
      function QuestLogTitleButton_OnClick(button)
-        QuestTranslator_UpdateQuestInfo();
         QTR_QuestLogTitleButton_OnClik(button);
+        QuestTranslator_UpdateQuestInfo();
      end
   end
 end
