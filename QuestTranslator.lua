@@ -9,6 +9,7 @@ local QTR_version = "4.01";
 local QTR_name = UnitName("player");
 local QTR_class,_= UnitClass("player");
 local QTR_race = UnitRace("player");
+local QTR_sex = UnitSex("player");
 local QTR_event="";
 local QuestTranslator_MessOrig = {
       details    = "Description", 
@@ -569,6 +570,17 @@ function QuestTranslator_ExpandUnitInfo(msg)
   msg = string.gsub(msg, "$R", QTR_race);
   msg = string.gsub(msg, "$B", "|n");
   msg = string.gsub(msg, "$b", "|n");
+  msg = string.gsub(msg, "%$g([^;]*);", function (s)
+   sex=0
+   _i1,_i2=string.find(s,":")
+   if(QTR_sex==2) then
+    return string.sub(s,0,_i1-1)
+   end
+   if(QTR_sex==3) then
+    return string.sub(s,_i1+1)
+   end
+    return s
+  end)
   return msg;
 end
 
