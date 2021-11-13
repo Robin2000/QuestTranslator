@@ -103,8 +103,8 @@ function QuestTranslator_OnLoad1()
   QuestLogDetailScrollFrame:SetScript("OnShow", QuestTranslator_ShowAndUpdateQuestInfo);
   QuestLogDetailScrollFrame:SetScript("OnHide", QuestTranslator_HideQuestInfo);
 
-  QuestTranslator_QuestTitle:SetFont(QTR_Font, 17);
-  QuestTranslator_QuestDetail:SetFont(QTR_Font, 14);
+  QuestTranslator_QuestTitle:SetFont(QTR_Font, 18);
+  QuestTranslator_QuestDetail:SetFont(QTR_Font, 16);
   QuestTranslatorFrame1:ClearAllPoints();
   QuestTranslatorFrame1:SetPoint("TOPLEFT", QuestLogFrame, "TOPRIGHT", -3, -12);
 
@@ -182,8 +182,8 @@ function QuestTranslator_OnLoad2()
   QuestTranslator.frame2:RegisterEvent("QUEST_PROGRESS");
   QuestTranslator.frame2:RegisterEvent("QUEST_COMPLETE");
   QuestTranslator.frame2:SetScript("OnEvent", QuestTranslator_OnEvent3);
-  QuestTranslator_QuestTitle2:SetFont(QTR_Font, 17);
-  QuestTranslator_QuestDetail2:SetFont(QTR_Font, 14);
+  QuestTranslator_QuestTitle2:SetFont(QTR_Font, 18);
+  QuestTranslator_QuestDetail2:SetFont(QTR_Font, 16);
   QuestTranslator_QuestWarning2:SetFont(QTR_Font, 12);
   QuestTranslatorFrame2:ClearAllPoints();
   QuestTranslatorFrame2:SetPoint("TOPLEFT", QuestFrame, "TOPRIGHT", -31, -19);
@@ -371,7 +371,7 @@ function QuestTranslator_ShowFrame2(eventStr, qid)
         if (QuestTranslator_QuestData[qid]["Objectives"]) then
            QTR_text2 = QuestTranslator_ExpandUnitInfo(QuestTranslator_QuestData[qid]["Objectives"]);
         end
-        QTR_text = QTR_text .. "\n\n" .. QuestTranslator_Messages.objectives .. "\n" .. QTR_text2;
+        QTR_text = QTR_text .. "\n\n|cFFFFFFFF" .. QuestTranslator_Messages.objectives .. "|r\n" .. QTR_text2;
      end
      if (eventStr == "QUEST_PROGRESS") then
         if (QuestTranslator_QuestData[qid]["Progress"]) then
@@ -543,18 +543,18 @@ function QuestTranslator_UpdateQuestInfo()
   if (QuestTranslator_QuestData[str_id]) then
      QTR_objectives  = QuestTranslator_ExpandUnitInfo(QuestTranslator_QuestData[str_id]["Objectives"]);
      QTR_description = QuestTranslator_ExpandUnitInfo(QuestTranslator_QuestData[str_id]["Description"]);
-     QTR_descripFull = QuestTranslator_Messages.details .. "\n" .. QTR_description;
+     QTR_descripFull = "|cFFFFFFFF" ..QuestTranslator_Messages.details .. "|r\n" .. QTR_description;
      QTR_translator = "";
      if (QuestTranslator_QuestData[str_id]["Translator"]) then
         if (QuestTranslator_QuestData[str_id]["Translator"]>"") then
-            QTR_translator = "\n\n" .. QuestTranslator_Messages.translator .. " " .. QuestTranslator_ExpandUnitInfo(QuestTranslator_QuestData[str_id]["Translator"]);
+            QTR_translator = "\n\n|cFFFFFFFF" .. QuestTranslator_Messages.translator .. "|r " .. QuestTranslator_ExpandUnitInfo(QuestTranslator_QuestData[str_id]["Translator"]);
         end
      end
      QuestTranslator_QuestTitle:SetText(QuestTranslator_ExpandUnitInfo(QuestTranslator_QuestData[str_id]["Title"]));
      QuestTranslator_QuestDetail:SetText(QTR_objectives .. "\n\n" .. QTR_descripFull .. QTR_translator);
   else
      QuestTranslator_QuestTitle:SetText(questTitle);
-     QuestTranslator_QuestDetail:SetText(QuestTranslator_Messages.missing);
+     QuestTranslator_QuestDetail:SetText("|cFFFFFFFF"..QuestTranslator_Messages.missing.."|r");
   end 
 end
 
