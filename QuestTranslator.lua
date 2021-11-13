@@ -7,7 +7,7 @@
 -- Global Variables
 local QTR_version = "4.01";
 local QTR_name = UnitName("player");
-local QTR_class,_= UnitClass("player");
+local QTR_class,QTR_enclass= UnitClass("player");
 local QTR_race = UnitRace("player");
 local QTR_sex = UnitSex("player");
 local QTR_event="";
@@ -562,22 +562,19 @@ end
 function QuestTranslator_ExpandUnitInfo(msg)
   -- replace special characters into message
   msg = string.gsub(msg, "\n", "|n");
-  msg = string.gsub(msg, "$n", QTR_name);
-  msg = string.gsub(msg, "$N", QTR_name);
-  msg = string.gsub(msg, "$c", QTR_class);
-  msg = string.gsub(msg, "$C", QTR_class);
-  msg = string.gsub(msg, "$r", QTR_race);
-  msg = string.gsub(msg, "$R", QTR_race);
-  msg = string.gsub(msg, "$B", "|n");
-  msg = string.gsub(msg, "$b", "|n");
-  msg = string.gsub(msg, "%$g([^;]*);", function (s)
+  msg = string.gsub(msg, "%$[nN]", "|cFFFFFF00"..QTR_name.."|r");
+  msg = string.gsub(msg, "%$[cC]", "|cFFFFFF00"..QTR_enclass.."|r");
+  msg = string.gsub(msg, "%$[rR]", "|cFFFFFF00"..QTR_race.."|r");
+  msg = string.gsub(msg, "%$[bB]", "|n");
+
+  msg = string.gsub(msg, "%$[gG]([^;]*);", function (s)
    sex=0
    _i1,_i2=string.find(s,":")
    if(QTR_sex==2) then
-    return string.sub(s,0,_i1-1)
+    return "|cFFFFFF00"..string.sub(s,0,_i1-1).."|r"
    end
    if(QTR_sex==3) then
-    return string.sub(s,_i1+1)
+    return "|cFFFFFF00"..string.sub(s,_i1+1).."|r"
    end
     return s
   end)
