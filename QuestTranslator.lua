@@ -210,19 +210,19 @@ end
 
 function QuestTranslator_OnEvent3()
 
-  if (event == "QUEST_GREETING") then
-    if (QTR_PS["active"]=="1" and QTR_PS["mode"]=="1") then
-      CurrentQuestsText:SetText(QuestTranslator_Messages.currquests);
-      CurrentQuestsText:SetFont(QTR_Font, 18);
-      AvailableQuestsText:SetText(QuestTranslator_Messages.avaiquests);
-      AvailableQuestsText:SetFont(QTR_Font, 18);
-    else
-      CurrentQuestsText:SetText(QuestTranslator_MessOrig.currquests);
-      CurrentQuestsText:SetFont(Original_Font1, 18);
-      AvailableQuestsText:SetText(QuestTranslator_MessOrig.avaiquests);
-      AvailableQuestsText:SetFont(Original_Font1, 18);
-    end
-  end
+--  if (event == "QUEST_GREETING") then
+--    if (QTR_PS["active"]=="1" and QTR_PS["mode"]=="1") then
+--      CurrentQuestsText:SetText(QuestTranslator_Messages.currquests);
+--      CurrentQuestsText:SetFont(QTR_Font, 18);
+--      AvailableQuestsText:SetText(QuestTranslator_Messages.avaiquests);
+--      AvailableQuestsText:SetFont(QTR_Font, 18);
+--    else
+--      CurrentQuestsText:SetText(QuestTranslator_MessOrig.currquests);
+--      CurrentQuestsText:SetFont(Original_Font1, 18);
+--      AvailableQuestsText:SetText(QuestTranslator_MessOrig.avaiquests);
+--      AvailableQuestsText:SetFont(Original_Font1, 18);
+--    end
+--  end
 
   if (event == "QUEST_DETAIL") then
      QTR_event = "QUEST_DETAIL";
